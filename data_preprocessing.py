@@ -4,10 +4,9 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 def load_and_preprocess_data(file_path):
   
-    # Load the dataset
     data = pd.read_csv(file_path)
 
-    # Handle missing values: Apply median only to numeric columns
+    # Handle missing values
     numeric_columns = data.select_dtypes(include=['number']).columns
     data[numeric_columns] = data[numeric_columns].apply(lambda col: col.fillna(col.median()))
 
