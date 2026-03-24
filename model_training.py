@@ -11,13 +11,13 @@ def get_user_input(columns, label_encoders, scaler):
     user_data = {}
     
     for column in columns:
-        if column == 'target':  # Skip the target column
+        if column == 'target': 
             continue
         
         if column in label_encoders:
             unique_values = list(label_encoders[column].classes_)
             user_input = input(f"Enter {column} (choose from {', '.join(unique_values)}): ")
-            # Ensure that the input is valid
+            # Ensure validity of input
             while user_input not in unique_values:
                 print(f"Invalid input. Please choose a valid value from {', '.join(unique_values)}.")
                 user_input = input(f"Enter {column} (choose from {', '.join(unique_values)}): ")
@@ -27,7 +27,7 @@ def get_user_input(columns, label_encoders, scaler):
                 try:
                     user_input = float(input(f"Enter {column}: "))
                     user_data[column] = user_input
-                    break  # Break loop if the float is valid
+                    break 
                 except ValueError:
                     print("Invalid input. Please enter a valid number.")
     
